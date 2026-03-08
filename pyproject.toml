@@ -1,0 +1,16 @@
+[project]
+name = "interrogation-mcp"
+version = "0.1.0"
+description = "MCP server for the 3A Interrogation LangGraph application"
+requires-python = ">=3.11"
+dependencies = [
+    "mcp[cli]>=1.0",
+    "langgraph-sdk>=0.1.0",
+    "uvicorn>=0.30",
+    "starlette>=0.40",
+    "pydantic-settings>=2.0",
+]
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
