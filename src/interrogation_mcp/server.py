@@ -77,7 +77,7 @@ mcp = FastMCP(
     transport_security=TransportSecuritySettings(
         enable_dns_rebinding_protection=True,
         allowed_hosts=[
-            "interrogation-mcp-production.up.railway.app",
+            "caring-forgiveness-production.up.railway.app",
             "localhost:8000",
         ],
     ),
