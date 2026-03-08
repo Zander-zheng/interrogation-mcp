@@ -16,11 +16,10 @@ class ApiKeyMiddleware:
             return
 
         path = scope.get("path", "")
-        # /health is public; /messages/ is session-bound (session_id is unguessable)
-        # and MCP clients don't forward the API key on POST requests after SSE auth.
-        # /mcp is the Streamable HTTP transport — ChatGPT and newer clients POST here
-        # without auth headers; session security is handled by Mcp-Session-Id header.
-        if path == "/health" or path.startswith("/messages") or path.startswith("/mcp"):
+        # /health is public; /sse is public (Claude web connectors strip query
+        # params — session security relies on unguessable session_id instead);
+        # /messages/ is session-bound; /mcp uses Mcp-Session-Id header.
+        if path == "/health" or path == "/sse" or path.startswith("/messages") or path.startswith("/mcp"):
             await self.app(scope, receive, send)
             return
 
